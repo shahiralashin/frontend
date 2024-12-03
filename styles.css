@@ -1,0 +1,262 @@
+/* General Styles */
+body {
+    font-family: Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f7f9fa; /* Udemy light background */
+    color: #1c1d1f; /* Udemy dark text color */
+}
+
+header {
+    background-color: #5624d0; /* Udemy purple */
+    text-align: center; /* Ensures header text is centered */
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center;
+    flex-direction: column; /* Stack the title and button on top of each other */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+}
+
+header button {
+    background-color: #3b21a5; /* Slightly darker purple for buttons */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+header button:hover {
+    background-color: #2a157b; /* Hover effect */
+}
+
+header button:disabled {
+    background-color: #bdbdbd;
+    cursor: not-allowed;
+}
+
+/* Main Content */
+main {
+    padding: 1rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Sort Controls */
+.sort-controls {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.sort-controls button {
+    background-color: #3b21a5; /* Sort button styling */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.sort-controls button:hover {
+    background-color: #2a157b; /* Hover effect */
+}
+
+.sort-controls button:disabled {
+    background-color: #bdbdbd;
+    cursor: not-allowed;
+}
+
+/* Courses Page */
+.course-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.course-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.course-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    object-fit: cover; /* Ensures the image covers its container */
+}
+
+.course-item h2 {
+    font-size: 1.25rem;
+    margin: 0.5rem 0;
+}
+
+.course-item p {
+    margin: 0.5rem 0;
+}
+
+.course-item button {
+    background-color: #ec5252; /* Udemy red for buttons */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.course-item button:hover {
+    background-color: #a72020; /* Darker red for hover */
+}
+
+.course-item button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.course-item span {
+    display: block;
+    margin: 0.5rem 0;
+}
+
+.course-item div {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    color: #e59819; /* Udemy gold for ratings */
+    display: flex; /* Align ratings horizontally */
+    justify-content: center;
+    gap: 2px;
+}
+
+/* Cart Page */
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item:last-child {
+    border-bottom: none; /* Remove bottom border from last item */
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.cart-item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 1rem;
+    flex: 1;
+}
+
+.cart-item-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.cart-item-price {
+    color: #ec5252;
+}
+
+.cart-item-remove {
+    color: #3b21a5;
+    cursor: pointer;
+    font-weight: bold;
+    align-self: flex-end;
+}
+
+.cart-item-remove:hover {
+    color: #2a157b;
+}
+
+/* Checkout Form */
+.checkout-form {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.checkout-form form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.checkout-form form input, 
+.checkout-form form select, 
+.checkout-form form button {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.checkout-form form button {
+    background-color: #5624d0;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 0.75rem;
+}
+
+.checkout-form form button:hover {
+    background-color: #3b21a5;
+}
+
+.checkout-form form button:d
