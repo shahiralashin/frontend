@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>After School Courses Store</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
@@ -206,7 +205,7 @@
             },
             methods: {
             fetchCourses() {
-                fetch('http://localhost:3000/api/lessons')
+                fetch('https://backend-yzp1.onrender.com/api/lessons')
                     .then(response => {
                         if (!response.ok) {
                             throw new Error("Network response was not ok");
@@ -294,7 +293,7 @@
                     })),
                 };
 
-                fetch('http://localhost:3000/api/orders', {
+                fetch('https://backend-yzp1.onrender.com/api/orders', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -327,7 +326,7 @@
                 });
             },
             updateAvailableSpace(courseId, updatedSpaces) {
-                fetch(`http://localhost:3000/api/lessons/${courseId}`, {
+                fetch(`https://backend-yzp1.onrender.com/api/lessons/${courseId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
