@@ -6,7 +6,7 @@ const courses = [
         price: 150,
         availableSpaces: 10,
         rating: 4,
-        image: "images/art.jpg"
+        image: "https://backend-1-o3y1.onrender.com/images/art.jpg"
     },
     {
         id: 1002,
@@ -15,7 +15,7 @@ const courses = [
         price: 200,
         availableSpaces: 10,
         rating: 5,
-        image: "images/dance.jpg"
+        image: "https://backend-1-o3y1.onrender.com/images/dance.jpg"
     },
     {
         id: 1003,
@@ -24,7 +24,7 @@ const courses = [
         price: 250,
         availableSpaces: 10,
         rating: 5,
-        image: "images/tennis.jpg"
+        image: "https://backend-1-o3y1.onrender.com/images/tennis.jpg"
     },
     {
         id: 1004,
@@ -33,7 +33,7 @@ const courses = [
         price: 100,
         availableSpaces: 10,
         rating: 5,
-        image: "images/football.jpeg"
+        image: "https://backend-1-o3y1.onrender.com/images/football.jpeg"
     },
     {
         id: 1005,
@@ -42,7 +42,7 @@ const courses = [
         price: 300,
         availableSpaces: 10,
         rating: 5,
-        image: "images/horseriding.jpg"
+        image: "https://backend-1-o3y1.onrender.com/images/horseriding.jpg"
     },
     {
         id: 1006,
@@ -51,7 +51,7 @@ const courses = [
         price: 250,
         availableSpaces: 10,
         rating: 5,
-        image: "images/sailing.jpeg"
+        image: "https://backend-1-o3y1.onrender.com/images/sailing.jpeg"
     },
     {
         id: 1007,
@@ -60,7 +60,7 @@ const courses = [
         price: 225,
         availableSpaces: 10,
         rating: 4,
-        image: "images/piano.jpg"
+        image: "https://backend-1-o3y1.onrender.com/images/piano.jpg"
     },
     {
         id: 1008,
@@ -69,7 +69,7 @@ const courses = [
         price: 95,
         availableSpaces: 10,
         rating: 4,
-        image: "images/baking.jpg"
+        image: "https://backend-1-o3y1.onrender.com/images/baking.jpg"
     },
     {
         id: 1009,
@@ -78,7 +78,7 @@ const courses = [
         price: 175,
         availableSpaces: 10,
         rating: 5,
-        image: "images/hiking.jpg"
+        image: "https://backend-1-o3y1.onrender.com/images/hiking.jpg"
     },
     {
         id: 1010,
@@ -87,7 +87,7 @@ const courses = [
         price: 250,
         availableSpaces: 10,
         rating: 5,
-        image: "images/snorkelling.jpg"
+        image: "https://backend-1-o3y1.onrender.com/images/snorkelling.jpg"
     },
 ];
 
