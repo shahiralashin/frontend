@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>After School Courses Store</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
@@ -60,7 +59,7 @@
             <div v-if="showCourses" class="course-container">
                 <div v-for="course in sortedCourses" :key="course.id" class="course-item">
                     <figure>
-                        <img v-bind:src="course.image" alt="Course Image">
+                        <img v-bind:src="apiCall(course.image)" alt="Course Image">
                     </figure>
                     <h2 v-text="course.subjectName"></h2>
                     <p>Location: {{ course.location }}</p>
@@ -71,7 +70,7 @@
                         :disabled="!canAddToCart(course)" 
                         v-on:click="addToCart(course)">
                         Add to cart
-                    </button>
+                    </button> 
                     <span v-if="course.availableSpaces === 0" class="sold-out">Sold out!</span>
                     <span v-else-if="course.availableSpaces < 5" class="low-stock">Only {{ course.availableSpaces }} left!</span>
                     <span class="available-stock" v-else>Available</span>
@@ -184,10 +183,10 @@
                     'Abu Dhabi': 'AUH',
                     'Dubai': 'DXB',
                     'Sharjah': 'SHJ',
-                    'Ajman': 'CA',
-                    'Ras Al Khaimah': 'TX',
-                    'Umm Al Quwain': 'NY',
-                    'Fujairah': 'CA',
+                    'Ajman': 'AJM',
+                    'Ras Al Khaimah': 'RAK',
+                    'Umm Al Quwain': 'UAQ',
+                    'Fujairah': 'FUJ',
                 },
                 sortCriteria: 'location',
                 sortOrder: 'asc',
@@ -206,7 +205,7 @@
             },
             methods: {
             fetchCourses() {
-                fetch('http://localhost:3000/api/lessons')
+                fetch('https://backend-1-o3y1.onrender.com/api/lessons')
                     .then(response => {
                         if (!response.ok) {
                             throw new Error("Network response was not ok");
@@ -222,11 +221,12 @@
             },
                     // Method to handle the search input with debounce
                     handleSearchInput() {
-                        clearTimeout(this.debounceTimer); // Clear any previous debounce timer
-                        this.debounceTimer = setTimeout(() => {
-                            this.handleSearch(); // Call search after debounce delay
-                        }, 300); // 300ms delay
-                    },
+                    clearTimeout(this.debounceTimer); // Clear any previous debounce timer
+                    this.debounceTimer = setTimeout(() => {
+                        this.searchCourses(); // Call search after debounce delay
+                    }, 300); // 300ms delay
+                },
+
                     // Method to search for courses
                     searchCourses() {
                         console.log('Current search query:', this.searchQuery);
@@ -294,7 +294,7 @@
                     })),
                 };
 
-                fetch('http://localhost:3000/api/orders', {
+                fetch('https://backend-1-o3y1.onrender.com/api/orders', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -327,7 +327,7 @@
                 });
             },
             updateAvailableSpace(courseId, updatedSpaces) {
-                fetch(`http://localhost:3000/api/lessons/${courseId}`, {
+                fetch(`https://backend-1-o3y1.onrender.com/api/lessons/${courseId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -346,32 +346,33 @@
                 .catch(err => {
                     console.error("Error updating lesson space:", err);
                 });
-            }
+            },
+
+            apiCall(route) {
+                return `https://backend-1-o3y1.onrender.com/${route}`;
+            },
         },
             computed: {
                 cartItemCount() {
                     return this.cart.length;
                 },
                 sortedCourses() {
-                return this.courses
-                    .filter(course => {
-                        // Check if the search query matches any relevant field, including rating
-                        return course.subjectName.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-                            course.location.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-                            course.price.toString().includes(this.searchQuery) ||
-                            course.availableSpaces.toString().includes(this.searchQuery) ||
-                            (course.rating && course.rating.toString().includes(this.searchQuery)); // Adding search by rating
-                    })
-                    .sort((a, b) => {
-                        const compareValue = (field) => {
-                            if (a[field] < b[field]) return -1;
-                            if (a[field] > b[field]) return 1;
-                            return 0;
-                        };
-                        let result = compareValue(this.sortCriteria);
-                        return this.sortOrder === 'asc' ? result : -result;
+                let sorted = [...this.courses]; // Clone the courses array
+                if (this.sortCriteria && this.sortOrder) {
+                    sorted.sort((a, b) => {
+                        let aValue = a[this.sortCriteria];
+                        let bValue = b[this.sortCriteria];
+                        
+                        if (this.sortOrder === 'asc') {
+                            return aValue > bValue ? 1 : -1;
+                        } else {
+                            return aValue < bValue ? 1 : -1;
+                        }
                     });
-            }
+                }
+                return sorted;
+            },
+        },
             },
             watch: {
             // Trigger the search every time the searchQuery is updated
@@ -380,6 +381,9 @@
                     this.handleSearchInput(); // Call the debounced search method
                 }
             }
+        },
+        mounted() {
+            this.fetchCourses();  // This will fetch the courses from the backend
         },
             filters: {
                 currency(value, symbol = 'AED ') {
