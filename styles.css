@@ -259,4 +259,69 @@ main {
     background-color: #3b21a5;
 }
 
-.checkout-form form button:d
+.checkout-form form button:disabled {
+    background-color: #bdbdbd;
+    cursor: not-allowed;
+}
+
+/* Search Bar */
+.search-bar {
+    margin: 0px auto; /* Adds space above the search bar */
+    padding: 0px;
+    width: 100%; /* Make sure the search bar takes full width of its container */
+    max-width: 1000px; /* Limits the width of the search bar */
+    margin-left: auto; /* Centers the search bar horizontally */
+    margin-right: auto; /* Centers the search bar horizontally */
+}
+
+.search-bar input {
+    width: 100% !important; /* Ensures the input takes up the full width of its container */
+    padding: 10px 15px; /* Adjust padding to ensure space around the text */
+    font-size: 16px; /* Adjust font size */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding is included in the width calculation */
+    overflow: hidden; /* Prevents overflow beyond the box */
+    text-overflow: ellipsis; /* Adds ellipsis if the text overflows */
+}
+
+/* Placeholder Styles */
+.search-bar input::placeholder {
+    color: #999; /* Lighter color for placeholder text */
+    font-size: 16px; /* Ensure placeholder font size matches the input */
+}
+
+/* Focus Effects for Inputs */
+.checkout-form form input:focus, 
+.search-bar input:focus {
+    border-color: #5624d0; /* Highlight the border on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(86, 36, 208, 0.3); /* Add subtle shadow */
+}
+
+/* Button Hover Effect */
+.checkout-form form button {
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Add scale effect */
+}
+
+.checkout-form form button:hover {
+    background-color: #3b21a5;
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* Make sure header elements stack properly on smaller screens */
+    header {
+        padding: 1rem 0.5rem;
+        flex-direction: column;
+    }
+    
+    .course-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .cart-container {
+        padding: 1rem;
+    }
+}
